@@ -37,7 +37,10 @@ export default function Home() {
     setOpposeRebuttal("");
     setVerdict(null);
 
-    const backendUrl = `http://${window.location.hostname}:8000/api/factcheck/stream`;
+    // Use NEXT_PUBLIC_BACKEND_URL if available (for Vercel/Render deployment), fallback to localhost
+    const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || `http://${window.location.hostname}:8000`;
+    const backendUrl = `${baseUrl.replace(/\/$/, '')}/api/factcheck/stream`;
+    
     const response = await fetch(backendUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
