@@ -44,14 +44,21 @@ _encoder = None
 def get_encoder():
     global _encoder
     if _encoder is None:
-        from sentence_transformers import SentenceTransformer
-        _encoder = SentenceTransformer('all-MiniLM-L6-v2')
+        try:
+            from sentence_transformers import SentenceTransformer
+            _encoder = SentenceTransformer('all-MiniLM-L6-v2')
+        except ImportError:
+            print("WARNING: sentence_transformers not installed. Skipping Pinecone vector embeddings.")
+            return None
     return _encoder
 
 def _pinecone_search(query: str, top_k: int = 2) -> List[Dict[str, Any]]:
     """Query internal Pinecone vector DB"""
     try:
         encoder = get_encoder()
+        if encoder is None:
+            return []
+            
         query_embedding = encoder.encode(query).tolist()
         results = pinecone_index.query(
             vector=query_embedding,

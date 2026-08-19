@@ -6,13 +6,9 @@ langchain-text-splitters
 
 # --- LLM Providers ---
 groq
-google-generativeai
-google-genai
-langchain-google-genai
 
 # --- Retrieval ---
 pinecone
-sentence-transformers
 tavily-python
 
 # --- Backend ---
@@ -21,19 +17,12 @@ uvicorn[standard]
 sse-starlette
 pydantic
 
-# --- Evaluation ---
-ragas
-datasets
-
 # --- Observability ---
 langfuse
 
 # --- Utilities ---
 python-dotenv==1.0.1
-pytest==8.3.2
 instructor==1.7.2
-fastapi==0.115.0
-uvicorn==0.34.0
 playwright
 beautifulsoup4
 alembic
