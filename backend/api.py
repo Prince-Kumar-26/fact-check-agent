@@ -20,8 +20,8 @@ from backend.schemas import Citation
 from backend.database import engine, get_db, Base
 from backend.models import FactCheckRecord
 
-# Tables are managed by Alembic migrations
-# Base.metadata.create_all(bind=engine)
+# Tables are managed by Alembic migrations but we create them here for ease of deployment
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Fact Check Debate API V2")
 
