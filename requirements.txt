@@ -17,6 +17,7 @@ fastapi
 uvicorn[standard]
 sse-starlette
 pydantic
+python-multipart
 
 # --- Observability ---
 langfuse
