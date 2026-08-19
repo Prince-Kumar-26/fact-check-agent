@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+    --bg-color: #e0e5ec;
+    --text-color: #4a5568;
+    --text-muted: #a0aec0;
+    --accent-support: #48bb78;
+    --accent-oppose: #f56565;
+    
+    /* Neumorphic Shadows */
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
+    
+    --neu-convex: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    --neu-concave: inset 6px 6px 10px 0 var(--shadow-dark), inset -6px -6px 10px 0 var(--shadow-light);
+    --neu-pressed: inset 3px 3px 6px 0 var(--shadow-dark), inset -3px -3px 6px 0 var(--shadow-light);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+/* Neumorphic Base */
+.neumorphic-panel {
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: var(--neu-convex);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.neumorphic-inset {
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: var(--neu-concave);
+    padding: 1.5rem;
+}
+
+/* Inputs & Buttons */
+.neumorphic-input {
+    background-color: var(--bg-color);
+    border: none;
+    box-shadow: var(--neu-concave);
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.neumorphic-input:focus {
+    box-shadow: var(--neu-pressed);
+}
+
+.neumorphic-btn {
+    background-color: var(--bg-color);
+    border: none;
+    box-shadow: var(--neu-convex);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.neumorphic-btn:hover {
+    color: #2d3748;
+}
+
+.neumorphic-btn:active {
+    box-shadow: var(--neu-pressed);
+}
+
+.neumorphic-badge {
+    background-color: var(--bg-color);
+    box-shadow: var(--neu-convex);
+    color: #4a5568;
+    border: none;
+}

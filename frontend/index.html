@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fact Check Debate Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="neumorphic-panel text-center header-section">
+            <div class="logo-circle">
+                <span class="logo-icon">⚖️</span>
+            </div>
+            <h1>Fact Check Debate Engine</h1>
+            <p class="subtitle">AI Agents debating facts to uncover the truth.</p>
+        </header>
+
+        <section class="guide-section neumorphic-panel">
+            <h2 class="section-title">How it Works</h2>
+            <div class="guide-grid">
+                <div class="neumorphic-inset guide-step">
+                    <div class="step-number">1</div>
+                    <h4>Submit a Claim</h4>
+                    <p class="text-muted">Enter any factual statement. The system extracts atomic sub-claims.</p>
+                </div>
+                <div class="neumorphic-inset guide-step">
+                    <div class="step-number">2</div>
+                    <h4>Dual Retrieval</h4>
+                    <p class="text-muted">We search the live web for evidence to both PROVE and DISPROVE the claim.</p>
+                </div>
+                <div class="neumorphic-inset guide-step">
+                    <div class="step-number">3</div>
+                    <h4>Agent Debate</h4>
+                    <p class="text-muted">A Support Agent and Oppose Agent build their cases and cross-examine.</p>
+                </div>
+                <div class="neumorphic-inset guide-step">
+                    <div class="step-number">4</div>
+                    <h4>Final Verdict</h4>
+                    <p class="text-muted">An impartial AI Judge weighs the evidence and issues a definitive verdict.</p>
+                </div>
+            </div>
+
+            <div class="topic-boundaries mt-4 text-center">
+                <h3 class="mb-3">Supported Topics</h3>
+                <div class="badges-container">
+                    <span class="neumorphic-badge">🧬 Science</span>
+                    <span class="neumorphic-badge">🏥 Health & Medicine</span>
+                    <span class="neumorphic-badge">📰 Public Domain Facts</span>
+                    <span class="neumorphic-badge">🌍 Current Events</span>
+                </div>
+                <p class="mt-3 text-muted text-small">Note: Political opinions and subjective claims are blocked by guardrails.</p>
+            </div>
+
+            <div class="quick-prompts mt-4 text-center">
+                <h4 class="mb-3 text-muted">Try a sample claim:</h4>
+                <div class="badges-container">
+                    <button class="neumorphic-badge prompt-btn" onclick="document.getElementById('claim-input').value = this.innerText">mRNA vaccines alter human DNA</button>
+                    <button class="neumorphic-badge prompt-btn" onclick="document.getElementById('claim-input').value = this.innerText">The Earth is flat</button>
+                    <button class="neumorphic-badge prompt-btn" onclick="document.getElementById('claim-input').value = this.innerText">Water boils at 100 degrees Celsius</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-section neumorphic-panel">
+            <div class="input-group">
+                <input type="text" id="claim-input" class="neumorphic-input" placeholder="Enter a claim to fact-check... (e.g. mRNA vaccines alter DNA)">
+                <button id="check-btn" class="neumorphic-btn">Verify</button>
+            </div>
+            
+            <div id="loading-state" class="hidden text-center mt-4">
+                <div class="neumorphic-spinner"></div>
+                <p id="loading-text" class="mt-2 text-muted">Analyzing claim...</p>
+            </div>
+            
+            <div id="error-state" class="hidden text-center mt-4 error-text neumorphic-inset p-3">
+            </div>
+        </section>
+
+        <section id="results-dashboard" class="hidden mt-4">
+            <div class="neumorphic-panel text-center mb-4">
+                <h2 id="verdict-title" class="verdict-heading">Verdict</h2>
+                <div class="neumorphic-inset verdict-score-box">
+                    <span id="verdict-text" class="verdict-text">Unknown</span>
+                    <span id="verdict-confidence" class="verdict-confidence">0%</span>
+                </div>
+                <p id="verdict-summary" class="mt-3"></p>
+                <div class="citations mt-3">
+                    <h4>Citations:</h4>
+                    <ul id="citations-list" class="text-left"></ul>
+                </div>
+            </div>
+
+            <div class="debate-grid">
+                <div class="neumorphic-panel agent-panel">
+                    <h3 class="support-title">🟢 Support Agent</h3>
+                    <div class="neumorphic-inset content-box" id="support-case"></div>
+                    <h4 class="mt-3">Rebuttal</h4>
+                    <div class="neumorphic-inset content-box rebuttal" id="support-rebuttal"></div>
+                </div>
+                <div class="neumorphic-panel agent-panel">
+                    <h3 class="oppose-title">🔴 Oppose Agent</h3>
+                    <div class="neumorphic-inset content-box" id="oppose-case"></div>
+                    <h4 class="mt-3">Rebuttal</h4>
+                    <div class="neumorphic-inset content-box rebuttal" id="oppose-rebuttal"></div>
+                </div>
+            </div>
+            
+            <div class="ai-disclaimer mt-4 text-muted text-small text-center">
+                <p>⚠️ <strong>Disclaimer:</strong> This is an experimental AI-based fact-check engine. It can make mistakes or hallucinate evidence. Always verify critical information independently.</p>
+            </div>
+        </section>
+        
+        <footer class="mt-4 text-center text-muted text-small pb-4">
+            <p>&copy; 2026 Fact Check Debate Engine. Built with LangGraph, FastAPI, and Neumorphism.</p>
+        </footer>
+    </div>
+    
+    <!-- Marked.js for markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
